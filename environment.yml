@@ -1,0 +1,10 @@
+name: titanic
+channels:
+  - defaults
+dependencies:
+  - pandas
+  - matplotlib
+  - python=3.10
+  - numpy
+  - seaborn
+prefix: /export/convidado/.conda/envs/titanic
