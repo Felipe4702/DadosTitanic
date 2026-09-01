@@ -26,4 +26,36 @@ def idade_genero_classe(df):
 
     return estatisticas
 
-estatisticas = idade_genero_classe(df)
+def sobrevivencia_faixa_etaria(df):
+
+    grupos = [0,12,18,59,100]
+    nomes = ['Criancas (0-12)', 'Jovens (13-18)', 'Adultos (19-59)', 'Idosos (60+)']
+
+    #cria uma nova coluna no df, de acordo com o que decidimos nos grupos e nomes
+    df['Faixa Etaria'] = pd.cut(df['Age'], bins = grupos, labels = nomes)
+    #agrupamos por cada grupo do faixa etaria e calculamos a porcentagem de sobreviventes, observerd = true pra tirar o warning
+    taxa = df.groupby('Faixa Etaria', observed = True)['Survived'].mean().round(2) * 100
+    #faz com que os indices voltem a ser 0,1,2... e nao os nomes dados. isso ajuda na criacao do grafico
+    taxa = taxa.reset_index()
+    
+    print("Taxa de sobrevivencia por grupo demografico:")
+    print(taxa)
+
+
+    plt.figure(figsize = (10,6))
+    #hue = faixa etaria e legend = false para tirar warnig
+    sns.barplot(data=taxa, x='Faixa Etaria', y='Survived', hue='Faixa Etaria', palette='Set2', legend=False)
+    
+    plt.title('Taxa de sobrevivencia por grupo demografico')
+    plt.xlabel('Faixa etaria')
+    plt.ylabel('Taxa de Sobrevivência')
+    plt.ylim(0,100)
+
+    plt.show()
+
+    return taxa
+
+
+
+#estatisticas = idade_genero_classe(df)
+taxa = sobrevivencia_faixa_etaria(df)
