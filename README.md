@@ -3,17 +3,16 @@
 **Aluno:** Cassiuscray Felipe dos Santos - Matrícula: 2024007815
 **Aluno:** Bryan Luiz Veloso da Silva - Matrícula: 2024007753
 
-**Como Executar**
+# Como Executar
 O projeto utiliza um ambiente virtual Conda para gerenciar as dependências (Pandas, Matplotlib, Seaborn). Para executar:
 
-1- Abra o terminal e rode: git clone https://github.com/Felipe4702/DadosTitanic
-2- Entre na pasta rodando: cd DadosTitanic
-3- Crie o ambiente rodando: conda env create -f environment.yml
-4- Depois ative o ambiente com: conda activate titanic
-5- Para executar, use: python main.py
----
+### 1- Abra o terminal e rode: git clone https://github.com/Felipe4702/DadosTitanic
+### 2- Entre na pasta rodando: cd DadosTitanic
+### 3- Crie o ambiente rodando: conda env create -f environment.yml
+### 4- Depois ative o ambiente com: conda activate titanic
+### 5- Para executar, use: python main.py
 
-### Resultados e Interpretações
+# Resultados e Interpretações
 
 **1. Distribuição de Idade por Gênero e Classe Social**
 * **Idade por Classe:** A 1ª classe abrigava os passageiros mais velhos do navio, com medianas acima dos 35 anos. Em contraste, a 3ª classe era composta majoritariamente por jovens, com a mediana de idades variando entre 20 e 25 anos.
