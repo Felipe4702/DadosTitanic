@@ -55,7 +55,39 @@ def sobrevivencia_faixa_etaria(df):
 
     return taxa
 
+def tarifa_sobrevivencia(df):
+    
+    #calcula a correlacao entre as colunas, o resultado sera entre -1 e 1,
+    #se for positica indica que na medida em que a tarifa sobe a taxa de sobrevivencia tambem tende a subir
+    correlacao = round(df['Fare'].corr(df['Survived']), 2)
+    print(f"Correlacao entre Tarifa e Sobrevivencia:")
+    print(correlacao)
+
+
+    #faz um 2x2 com o index sendo 0 se morreu e 1 viveu, as colunas sao 0 pra tarifa media e 1 pro desvio
+    estatisticas_tarifa = df.groupby('Survived')['Fare'].agg(['mean', 'std']).round(2)
+    estatisticas_tarifa.index = ['Nao Sobreviveu (0)', 'Sobreviveu (1)']
+    estatisticas_tarifa.columns = ['Tarifa Media', 'Variacao (Desvio Padrao)']
+
+    print("Estatisticas de Tarifa por Sobrevivencia:")
+    print(estatisticas_tarifa)
+
+    plt.figure(figsize = (10,6))
+    sns.boxplot(data=df, x='Survived', y='Fare', hue='Survived', palette='Set2', legend=False)
+    
+    plt.title('Estatisticas de Tarifa por Sobrevivencia')
+    plt.xlabel('Sobreviveu')
+    plt.ylabel('Valor da Tarifa')
+
+    plt.ylim(-5,200)
+    plt.show()
+
+    return estatisticas_tarifa
+
+
+
 
 
 #estatisticas = idade_genero_classe(df)
-taxa = sobrevivencia_faixa_etaria(df)
+#taxa = sobrevivencia_faixa_etaria(df)
+estatisticas_tarifa = tarifa_sobrevivencia(df)
