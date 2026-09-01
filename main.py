@@ -88,6 +88,6 @@ def tarifa_sobrevivencia(df):
 
 
 
-#estatisticas = idade_genero_classe(df)
-#taxa = sobrevivencia_faixa_etaria(df)
+estatisticas = idade_genero_classe(df)
+taxa = sobrevivencia_faixa_etaria(df)
 estatisticas_tarifa = tarifa_sobrevivencia(df)
